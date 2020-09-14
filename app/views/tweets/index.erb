@@ -1,0 +1,14 @@
+#<%if Helpers.is_logged_in?(session)%>
+
+<h2>Welcome, <%= Helpers.current_user(session).username %></h2>
+
+<% @tweets.each do |tweet| %>
+  <h3> Dummy Tweets:  <%= tweet.content %></h3>
+<% end %>
+<% else %>
+<% "/login" %>
+<% end %>
+<br>
+
+<a href="/tweets/new"><button>New Tweet</button></a>
+<a href="/logout"><button>Log Out</button></a>
