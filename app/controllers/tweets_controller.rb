@@ -45,16 +45,14 @@ class TweetsController < ApplicationController
     end
     
     get "/tweets/:id/edit" do
-        @user = Helpers.current_user(session)
         @tweet = Tweet.find(params[:id])
         if !Helpers.is_logged_in?(session)
             redirect "/login"
-        elsif @user.id != @tweet.user_id
-            redirect "/login"
-        # elsif 
-        else 
-            erb :"/tweets/edit_tweet"
         end
+        if @tweet.user_id != Helpers.current_user(session).id
+            redirect "/tweets"
+        end 
+            erb :"/tweets/edit_tweet"
     end
     
     patch "/tweets/:id" do

@@ -3,8 +3,8 @@
 <h2>Welcome, <%= Helpers.current_user(session).username %></h2>
 
 <% @tweets.each do |tweet| %>
-  <h3> Dummy Tweets:  <%= tweet.content %></h3>
-<% end %>
+  <h3> Dummy Tweets:  <%= tweet.content %> - <i><%=tweet.user_id%></i></h3>
+  <% end %>
 <% else %>
 <% "/login" %>
 <% end %>
